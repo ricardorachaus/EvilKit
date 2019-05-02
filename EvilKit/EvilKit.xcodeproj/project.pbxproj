@@ -8,12 +8,22 @@
 
 /* Begin PBXBuildFile section */
 		3D1DC8BF2277D86100144D73 /* EvilKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 3D1DC8BD2277D86100144D73 /* EvilKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3DDACC09227A1F8700347BFA /* EKView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DDACC08227A1F8700347BFA /* EKView.swift */; };
+		3DDACC0B227A7DC000347BFA /* EKScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DDACC0A227A7DC000347BFA /* EKScene.swift */; };
+		3DDACC0D227A81B900347BFA /* EKNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DDACC0C227A81B900347BFA /* EKNode.swift */; };
+		3DDACC14227A839F00347BFA /* EKPhysicsBody.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DDACC13227A839F00347BFA /* EKPhysicsBody.swift */; };
+		3DDACC17227A83CD00347BFA /* EKAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DDACC16227A83CD00347BFA /* EKAction.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		3D1DC8BA2277D86100144D73 /* EvilKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = EvilKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3D1DC8BD2277D86100144D73 /* EvilKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EvilKit.h; sourceTree = "<group>"; };
 		3D1DC8BE2277D86100144D73 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3DDACC08227A1F8700347BFA /* EKView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EKView.swift; sourceTree = "<group>"; };
+		3DDACC0A227A7DC000347BFA /* EKScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EKScene.swift; sourceTree = "<group>"; };
+		3DDACC0C227A81B900347BFA /* EKNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EKNode.swift; sourceTree = "<group>"; };
+		3DDACC13227A839F00347BFA /* EKPhysicsBody.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EKPhysicsBody.swift; sourceTree = "<group>"; };
+		3DDACC16227A83CD00347BFA /* EKAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EKAction.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -46,10 +56,47 @@
 		3D1DC8BC2277D86100144D73 /* EvilKit */ = {
 			isa = PBXGroup;
 			children = (
+				3DDACC0F227A836C00347BFA /* View */,
+				3DDACC15227A83C700347BFA /* Actions */,
+				3DDACC12227A838400347BFA /* Physics */,
+				3DDACC0E227A836000347BFA /* Nodes */,
 				3D1DC8BD2277D86100144D73 /* EvilKit.h */,
 				3D1DC8BE2277D86100144D73 /* Info.plist */,
 			);
 			path = EvilKit;
+			sourceTree = "<group>";
+		};
+		3DDACC0E227A836000347BFA /* Nodes */ = {
+			isa = PBXGroup;
+			children = (
+				3DDACC0A227A7DC000347BFA /* EKScene.swift */,
+				3DDACC0C227A81B900347BFA /* EKNode.swift */,
+			);
+			path = Nodes;
+			sourceTree = "<group>";
+		};
+		3DDACC0F227A836C00347BFA /* View */ = {
+			isa = PBXGroup;
+			children = (
+				3DDACC08227A1F8700347BFA /* EKView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		3DDACC12227A838400347BFA /* Physics */ = {
+			isa = PBXGroup;
+			children = (
+				3DDACC13227A839F00347BFA /* EKPhysicsBody.swift */,
+			);
+			path = Physics;
+			sourceTree = "<group>";
+		};
+		3DDACC15227A83C700347BFA /* Actions */ = {
+			isa = PBXGroup;
+			children = (
+				3DDACC16227A83CD00347BFA /* EKAction.swift */,
+			);
+			path = Actions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -95,6 +142,7 @@
 				TargetAttributes = {
 					3D1DC8B92277D86100144D73 = {
 						CreatedOnToolsVersion = 10.2.1;
+						LastSwiftMigration = 1020;
 					};
 				};
 			};
@@ -130,6 +178,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3DDACC0D227A81B900347BFA /* EKNode.swift in Sources */,
+				3DDACC0B227A7DC000347BFA /* EKScene.swift in Sources */,
+				3DDACC09227A1F8700347BFA /* EKView.swift in Sources */,
+				3DDACC17227A83CD00347BFA /* EKAction.swift in Sources */,
+				3DDACC14227A839F00347BFA /* EKPhysicsBody.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -260,6 +313,7 @@
 		3D1DC8C32277D86100144D73 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
@@ -279,6 +333,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = rachaus.EvilKit;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
@@ -286,6 +341,7 @@
 		3D1DC8C42277D86100144D73 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
