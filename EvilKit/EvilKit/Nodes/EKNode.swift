@@ -8,12 +8,88 @@
 
 import Foundation
 
-open class EKNode : NSResponder, NSCopying, NSSecureCoding {
-    public func copy(with zone: NSZone? = nil) -> Any {
-        return EKNode()
-    }
+import SpriteKit
+
+open class EKNode : NSResponder {
     
-    public static var supportsSecureCoding: Bool = false
+    /**
+     The position of the node in the parent's coordinate system
+     */
+    open var position: CGPoint
+    
+    /**
+     The z-order of the node (used for ordering). Negative z is "into" the screen, Positive z is "out" of the screen. A greater zPosition will sort in front of a lesser zPosition.
+     */
+    open var zPosition: CGFloat
+    
+    /**
+     The Euler rotation about the z axis (in radians)
+     */
+    open var zRotation: CGFloat
+    
+    /**
+     The scaling in the X axis
+     */
+    open var xScale: CGFloat
+    
+    /**
+     The scaling in the Y axis
+     */
+    open var yScale: CGFloat
+    
+    /**
+     The speed multiplier applied to all actions run on this node. Inherited by its children.
+     */
+    open var speed: CGFloat
+    
+    /**
+     Alpha of this node (multiplied by the output color to give the final result)
+     */
+    open var alpha: CGFloat
+    
+    /**
+     Controls whether or not the node's actions is updated or paused.
+     */
+    open var isPaused: Bool
+    
+    /**
+     Controls whether or not the node and its children are rendered.
+     */
+    open var isHidden: Bool
+    
+    /**
+     Controls whether or not the node receives touch events
+     */
+    open var isUserInteractionEnabled: Bool
+    
+    /**
+     The parent of the node.
+     
+     If this is nil the node has not been added to another group and is thus the root node of its own graph.
+     */
+    private(set) open var parent: EKNode?
+    
+    /**
+     The children of this node.
+     */
+    private(set) open var children: [EKNode]
+    
+    /**
+     The client assignable name.
+     
+     In general, this should be unique among peers in the scene graph.
+     */
+    open var name: String?
+    
+    /**
+     The scene that the node is currently in.
+     */
+    private(set) open var scene: EKScene?
+    
+    /**
+     Physics body attached to the node, with synchronized scale, rotation, and position
+     */
+    open var physicsBody: EKPhysicsBody?
     
     public override init() {
         self.position = CGPoint.zero
@@ -26,6 +102,7 @@ open class EKNode : NSResponder, NSCopying, NSSecureCoding {
         self.isPaused = false
         self.isHidden = false
         self.isUserInteractionEnabled = false
+        self.children = []
         super.init()
     }
     
@@ -44,128 +121,9 @@ open class EKNode : NSResponder, NSCopying, NSSecureCoding {
         self.isPaused = false
         self.isHidden = false
         self.isUserInteractionEnabled = false
+        self.children = []
         super.init(coder: aDecoder)
     }
-    
-    
-    open var frame: CGRect {
-        return CGRect.zero
-    }
-    
-    
-    /**
-     Calculates the bounding box including all child nodes in parents coordinate system.
-     */
-    open func calculateAccumulatedFrame() -> CGRect {
-        return CGRect.zero
-    }
-    
-    
-    /**
-     The position of the node in the parent's coordinate system
-     */
-    open var position: CGPoint
-    
-    
-    /**
-     The z-order of the node (used for ordering). Negative z is "into" the screen, Positive z is "out" of the screen. A greater zPosition will sort in front of a lesser zPosition.
-     */
-    open var zPosition: CGFloat
-    
-    
-    /**
-     The Euler rotation about the z axis (in radians)
-     */
-    open var zRotation: CGFloat
-    
-    
-    /**
-     The scaling in the X axis
-     */
-    open var xScale: CGFloat
-    
-    /**
-     The scaling in the Y axis
-     */
-    open var yScale: CGFloat
-    
-    
-    /**
-     The speed multiplier applied to all actions run on this node. Inherited by its children.
-     */
-    open var speed: CGFloat
-    
-    
-    /**
-     Alpha of this node (multiplied by the output color to give the final result)
-     */
-    open var alpha: CGFloat
-    
-    
-    /**
-     Controls whether or not the node's actions is updated or paused.
-     */
-    open var isPaused: Bool
-    
-    
-    /**
-     Controls whether or not the node and its children are rendered.
-     */
-    open var isHidden: Bool
-    
-    
-    /**
-     Controls whether or not the node receives touch events
-     */
-    open var isUserInteractionEnabled: Bool
-    
-    
-    /**
-     The parent of the node.
-     
-     If this is nil the node has not been added to another group and is thus the root node of its own graph.
-     */
-    open var parent: EKNode? {
-        return nil
-    }
-    
-    
-    /**
-     The children of this node.
-     
-     */
-    open var children: [EKNode] {
-        return []
-    }
-    
-    
-    /**
-     The client assignable name.
-     
-     In general, this should be unique among peers in the scene graph.
-     */
-    open var name: String?
-    
-    
-    /**
-     The scene that the node is currently in.
-     */
-    open var scene: EKScene? {
-        return nil
-    }
-    
-    
-    /**
-     Physics body attached to the node, with synchronized scale, rotation, and position
-     */
-    open var physicsBody: EKPhysicsBody?
-    
-    
-    /**
-     An optional dictionary that can be used to store your own data in a node. Defaults to nil.
-     */
-    open var userData: NSMutableDictionary?
-    
     
     /**
      Sets both the x & y scale
@@ -176,7 +134,6 @@ open class EKNode : NSResponder, NSCopying, NSSecureCoding {
         
     }
     
-    
     /**
      Adds a node as a child node of this node
      
@@ -185,44 +142,46 @@ open class EKNode : NSResponder, NSCopying, NSSecureCoding {
      @param node the child node to add.
      */
     open func addChild(_ node: EKNode) {
-        
+        children.append(node)
     }
-    
     
     open func insertChild(_ node: EKNode, at index: Int) {
-        
+        children.insert(node, at: index)
     }
     
-    
     open func removeChildren(in nodes: [EKNode]) {
-        
+        children.forEach { child in
+            nodes.forEach { node in
+                if child == node {
+                    child.removeFromParent()
+                }
+            }
+        }
     }
     
     open func removeAllChildren() {
-        
+        children.removeAll()
     }
     
     open func removeFromParent() {
-        
+        parent?.children.removeAll { $0 == self }
+        parent = nil
     }
     
     @available(OSX 10.11, *)
     open func move(toParent parent: EKNode) {
-        
+        self.parent = parent
     }
-    
     
     open func childNode(withName name: String) -> EKNode? {
-        return nil
+        let node = children.first { child in
+            guard let name = child.name else {
+                return false
+            }
+            return name.elementsEqual(name)
+        }
+        return node
     }
-    
-    
-    /* Returns true if the specified parent is in this node's chain of parents */
-    
-    open func inParentHierarchy(_ parent: EKNode) -> Bool {
-        return false
-    }
-    
     
     open func run(_ action: EKAction) {
         
@@ -235,7 +194,6 @@ open class EKNode : NSResponder, NSCopying, NSSecureCoding {
     open func run(_ action: EKAction, withKey key: String) {
         
     }
-    
     
     open func hasActions() -> Bool {
         return false
@@ -254,46 +212,5 @@ open class EKNode : NSResponder, NSCopying, NSSecureCoding {
         
     }
     
-    
-    open func contains(_ p: CGPoint) -> Bool {
-        return false
-    }
-    
-    
-    /**Returns the node itself or a child node at the point given.
-     * If the receiver is returned there is no child node at the given point.
-     * @return a child node or self at the given location.
-     */
-    open func atPoint(_ p: CGPoint) -> EKNode {
-        return EKNode()
-    }
-    
-    
-    open func nodes(at p: CGPoint) -> [EKNode] {
-        return []
-    }
-    
-    
-    open func convert(_ point: CGPoint, from node: EKNode) -> CGPoint {
-        return CGPoint.zero
-    }
-    
-    open func convert(_ point: CGPoint, to node: EKNode) -> CGPoint {
-        return CGPoint.zero
-    }
-    
-    
-    /* Returns true if the bounds of this node intersects with the transformed bounds of the other node, otherwise false */
-    
-    open func intersects(_ node: EKNode) -> Bool {
-        return false
-    }
-    
-    
-    /* Returns true if this node has equivalent content to the other object, otherwise false */
-    
-    open func isEqual(to node: EKNode) -> Bool {
-        return false
-    }
 }
 
