@@ -17,6 +17,7 @@ final class GameScene: EKScene {
         sprite.xScale = 1
         sprite.yScale = 1
         sprite.zRotation = 0
+        backgroundColor = EKColor.white
         addChild(sprite)
     }
     

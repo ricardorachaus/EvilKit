@@ -31,7 +31,7 @@ open class EKSpriteNode: EKNode {
     /**
      Base color for the sprite (If no texture is present, the color still is drawn)
      */
-    open var color: NSColor
+    open var color: MTLClearColor
 
 
     /**
@@ -52,7 +52,7 @@ open class EKSpriteNode: EKNode {
      @param color the color to use for tinting the sprite.
      @param size the size of the sprite in points
      */
-    public init(texture: EKTexture?, color: NSColor, size: CGSize) {
+    public init(texture: EKTexture?, color: MTLClearColor, size: CGSize) {
         self.texture = texture
         self.color = color
         self.size = size
@@ -65,7 +65,7 @@ open class EKSpriteNode: EKNode {
      @param size the size of the sprite in points
      */
     public convenience init(texture: EKTexture?, size: CGSize) {
-        self.init(texture: texture, color: .clear, size: size)
+        self.init(texture: texture, color: EKColor.clear, size: size)
     }
 
     /**
@@ -74,7 +74,7 @@ open class EKSpriteNode: EKNode {
      */
     public convenience init(texture: EKTexture?) {
         let size = texture?.size() == nil ? CGSize.zero : texture!.size()
-        self.init(texture: texture, color: .clear, size: size)
+        self.init(texture: texture, color: EKColor.clear, size: size)
     }
 
     /**
@@ -85,14 +85,14 @@ open class EKSpriteNode: EKNode {
      */
     public convenience init(imageNamed name: String) {
         let texture = EKTexture(imageNamed: name)
-        self.init(texture: texture, color: .clear, size: texture.size())
+        self.init(texture: texture, color: EKColor.clear, size: texture.size())
     }
 
     /**
      Support coding and decoding via NEKeyedArchiver.
      */
     public required init?(coder aDecoder: NSCoder) {
-        self.color = .clear
+        self.color = EKColor.clear
         self.size = CGSize.zero
         super.init(coder: aDecoder)
     }

@@ -13,5 +13,9 @@ internal extension CGFloat {
     var asFloat: Float {
         return Float(self)
     }
+    
+    var asDouble: Double {
+        return Double(self)
+    }
 
 }

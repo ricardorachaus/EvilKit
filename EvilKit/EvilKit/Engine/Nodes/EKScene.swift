@@ -26,7 +26,7 @@ open class EKScene: EKNode {
     /**
      Background color, defaults to gray
      */
-    open var backgroundColor: NSColor
+    open var backgroundColor: MTLClearColor
     
     /**
      Used to choose the origin of the scene's coordinate system
@@ -50,7 +50,7 @@ open class EKScene: EKNode {
     public init(size: CGSize) {
         self.size = size
         self.audioEngine = AVAudioEngine()
-        self.backgroundColor = .black
+        self.backgroundColor = EKColor.black
         self.anchorPoint = CGPoint.zero
         self.sceneModel = EKSceneModel()
         super.init()
@@ -59,7 +59,7 @@ open class EKScene: EKNode {
     public required init?(coder aDecoder: NSCoder) {
         self.size = CGSize.zero
         self.audioEngine = AVAudioEngine()
-        self.backgroundColor = .black
+        self.backgroundColor = EKColor.black
         self.anchorPoint = CGPoint.zero
         self.sceneModel = EKSceneModel()
         super.init(coder: aDecoder)
@@ -92,8 +92,16 @@ open class EKScene: EKNode {
     open func didChangeSize(_ oldSize: CGSize) {
         
     }
+    
+    internal func updateScene() {
+        if let camera = camera {
+            sceneModel.viewMatrix = camera.viewMatrix
+            sceneModel.projectionMatrix = camera.projectionMatrix
+        }
+    }
 
     override func render(renderCommandEncoder: MTLRenderCommandEncoder) {
+        updateScene()
         renderCommandEncoder.setVertexBytes(&sceneModel, length: EKSceneModel.stride, index: 1)
         super.render(renderCommandEncoder: renderCommandEncoder)
     }
