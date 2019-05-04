@@ -107,6 +107,7 @@ open class EKSpriteNode: EKNode {
     }
 
     override func render(renderCommandEncoder: MTLRenderCommandEncoder) {
+        renderCommandEncoder.setVertexBytes(&model, length: EKNodeModel.stride, index: 2)
         texture?.render(renderCommandEncoder: renderCommandEncoder)
         super.render(renderCommandEncoder: renderCommandEncoder)
     }

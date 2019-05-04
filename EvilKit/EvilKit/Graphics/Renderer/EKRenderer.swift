@@ -37,6 +37,14 @@ open class EKRenderer: NSObject {
     public /*not inherited*/ init(device: MTLDevice) {
         self.device = device
         self.commandQueue = device.makeCommandQueue()
+        guard let bundle = Bundle(identifier: "rachaus.EvilKit") else {
+            fatalError("Couldn't find bundle.")
+        }
+        do {
+            self.library = try device.makeDefaultLibrary(bundle: bundle)
+        } catch {
+            print(error.localizedDescription)
+        }
         super.init()
         setupDefaultRenderer()
     }
@@ -75,7 +83,6 @@ open class EKRenderer: NSObject {
         let depthStencilDescriptor = MTLDepthStencilDescriptor()
         let vertexDescriptor = MTLVertexDescriptor()
 
-        library = device.makeDefaultLibrary()
         vertexFunction = library?.makeFunction(name: "default_vertex_shader")
         fragmentFunction = library?.makeFunction(name: "default_fragment_shader")
 
@@ -90,6 +97,8 @@ open class EKRenderer: NSObject {
         vertexDescriptor.attributes[2].format = .float2
         vertexDescriptor.attributes[2].bufferIndex = 0
         vertexDescriptor.attributes[2].offset = float3.size + float2.size
+        
+        vertexDescriptor.layouts[0].stride = EKVertex.stride
 
         pipelineDescriptor.colorAttachments[0].pixelFormat = .bgra8Unorm_srgb
         pipelineDescriptor.depthAttachmentPixelFormat = .depth32Float

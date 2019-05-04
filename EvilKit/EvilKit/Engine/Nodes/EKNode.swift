@@ -113,13 +113,14 @@ open class EKNode : NSResponder {
     internal(set) open var scene: EKScene?
 
     internal var parentMatrix: matrix_float4x4 = matrix_identity_float4x4
+    internal var model: EKNodeModel
     internal var nodePosition: float3 = float3(0, 0, 0)
     internal var nodeScale: float3 = float3(1, 1, 1)
     internal var nodeRotation: float3 = float3(0, 0, 0)
     internal var nodeMatrix: matrix_float4x4 {
         var matrix = matrix_identity_float4x4
         matrix.translate(direction: nodePosition)
-        matrix.rotate(angle: nodeRotation.x, axis: Z_AXIS)
+        matrix.rotate(angle: nodeRotation.z, axis: Z_AXIS)
         matrix.scale(axis: nodeScale)
         return matrix_multiply(parentMatrix, matrix)
     }
@@ -130,14 +131,15 @@ open class EKNode : NSResponder {
         self.position = CGPoint.zero
         self.zPosition = 0
         self.zRotation = 0
-        self.xScale = 0
-        self.yScale = 0
+        self.xScale = 1
+        self.yScale = 1
         self.speed = 0
-        self.alpha = 0
+        self.alpha = 1
         self.isPaused = false
         self.isHidden = false
         self.isUserInteractionEnabled = false
         self.children = []
+        self.model = EKNodeModel()
         super.init()
     }
     
@@ -149,14 +151,15 @@ open class EKNode : NSResponder {
         self.position = CGPoint.zero
         self.zPosition = 0
         self.zRotation = 0
-        self.xScale = 0
-        self.yScale = 0
+        self.xScale = 1
+        self.yScale = 1
         self.speed = 0
-        self.alpha = 0
+        self.alpha = 1
         self.isPaused = false
         self.isHidden = false
         self.isUserInteractionEnabled = false
         self.children = []
+        self.model = EKNodeModel()
         super.init(coder: aDecoder)
     }
     
@@ -181,10 +184,12 @@ open class EKNode : NSResponder {
      */
     open func addChild(_ node: EKNode) {
         children.append(node)
+        node.parent = self
     }
     
     open func insertChild(_ node: EKNode, at index: Int) {
         children.insert(node, at: index)
+        node.parent = self
     }
     
     open func removeChildren(in nodes: [EKNode]) {
@@ -251,8 +256,17 @@ open class EKNode : NSResponder {
     }
 
     // MARK: - Render Methods
+    
+    internal func updateNodeMatrix() {
+        children.forEach {
+            $0.parentMatrix = nodeMatrix
+            $0.updateNodeMatrix()
+        }
+        model.matrix = nodeMatrix
+    }
 
     internal func render(renderCommandEncoder: MTLRenderCommandEncoder) {
+        updateNodeMatrix()
         children.forEach {
             $0.render(renderCommandEncoder: renderCommandEncoder)
         }

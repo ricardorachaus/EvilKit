@@ -95,6 +95,7 @@ open class EKScene: EKNode {
 
     override func render(renderCommandEncoder: MTLRenderCommandEncoder) {
         renderCommandEncoder.setVertexBytes(&sceneModel, length: EKSceneModel.stride, index: 1)
+        super.render(renderCommandEncoder: renderCommandEncoder)
     }
     
 }

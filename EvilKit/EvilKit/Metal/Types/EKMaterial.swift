@@ -12,4 +12,8 @@ internal struct EKMaterial: Sizeable {
     var color = float4(0.0, 0.0, 0.0, 1.0)
     var useColor = false
     var useTexture = false
+    
+    init(useTexture: Bool) {
+        self.useTexture = useTexture
+    }
 }

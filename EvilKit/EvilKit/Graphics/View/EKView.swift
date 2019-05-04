@@ -28,12 +28,22 @@ open class EKView: MTKView {
         renderer = EKRenderer(device: GPU.device)
         scenes = []
         super.init(frame: frame, device: GPU.device)
+        
+        self.clearColor = MTLClearColor(red: 0, green: 0, blue: 0, alpha: 1.0)
+        self.colorPixelFormat = .bgra8Unorm
+        self.depthStencilPixelFormat = .depth32Float
+        self.delegate = self
     }
     
     public required init(coder: NSCoder) {
         renderer = EKRenderer(device: GPU.device)
         scenes = []
         super.init(coder: coder)
+        self.device = GPU.device
+        self.clearColor = MTLClearColor(red: 0, green: 0, blue: 0, alpha: 1.0)
+        self.colorPixelFormat = .bgra8Unorm
+        self.depthStencilPixelFormat = .depth32Float
+        self.delegate = self
     }
     
     /**
@@ -44,6 +54,7 @@ open class EKView: MTKView {
     open func presentScene(_ scene: EKScene?) {
         if let scene = scene {
             scene.view = self
+            renderer.scene = scene
             scenes.insert(scene, at: scenes.startIndex)
         }
     }

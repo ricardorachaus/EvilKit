@@ -16,22 +16,27 @@ open class EKTexture: NSObject {
      The filtering mode the texture should use when not drawn at native size. Defaults to EKTextureFilteringLinear.
      */
     open var filteringMode: EKTextureFilteringMode {
-        didSet {
-            updateSampler()
+        willSet {
+            setupSampler()
         }
     }
 
-    private var name: String?
+    private var name: String
     private var texture: MTLTexture!
     private var samplerState: MTLSamplerState?
     private let samplerDescriptor: MTLSamplerDescriptor
 
-    private var mesh: EKMesh = EKQuadMesh()
-    private var material: EKMaterial = EKMaterial()
+    private var mesh: EKMesh
+    private var material: EKMaterial
 
     public override init() {
-        filteringMode = .linear
-        samplerDescriptor = MTLSamplerDescriptor()
+        self.filteringMode = .linear
+        self.name = ""
+        self.samplerDescriptor = MTLSamplerDescriptor()
+        self.mesh = EKQuadMesh()
+        self.material = EKMaterial(useTexture: true)
+        super.init()
+        setupSampler()
     }
 
     /**
@@ -84,7 +89,7 @@ open class EKTexture: NSObject {
 
     // MARK: - Resource methods
 
-    private func updateSampler() {
+    private func setupSampler() {
         samplerDescriptor.minFilter = filteringMode.samplerFilter()
         samplerDescriptor.magFilter = filteringMode.samplerFilter()
         samplerDescriptor.label = name
