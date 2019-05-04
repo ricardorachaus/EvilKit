@@ -17,17 +17,6 @@ open class EKSpriteNode: EKNode {
      */
     open var texture: EKTexture?
 
-
-    /**
-     Texture to use for generating normals that lights use to light this sprite.
-
-     This will only be used if the sprite is lit by at least one light.
-
-     @see EKLightNode
-     @see lightingBitMaEK
-     */
-    open var normalTexture: EKTexture?
-
     /**
      Base color for the sprite (If no texture is present, the color still is drawn)
      */

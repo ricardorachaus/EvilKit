@@ -13,9 +13,9 @@ final class GameScene: EKScene {
     override init(size: CGSize) {
         super.init(size: size)
         let sprite = EKSpriteNode(imageNamed: "mario.png")
-        sprite.position = CGPoint(x: 0.5, y: 0.5)
-        sprite.xScale = 1
-        sprite.yScale = 1
+        sprite.position = CGPoint(x: 0, y: 0)
+        sprite.xScale = 0.5
+        sprite.yScale = 0.5
         sprite.zRotation = 0
         backgroundColor = EKColor.white
         addChild(sprite)

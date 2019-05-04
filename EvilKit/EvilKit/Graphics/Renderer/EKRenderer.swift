@@ -50,24 +50,6 @@ open class EKRenderer: NSObject {
     }
 
     /**
-     Render the scene content in the specified Metal command buffer.
-
-     @param viewport The pixel dimensions in which to render.
-     @param commandBuffer The Metal command buffer in which SpriteKit should schedule rendering commands.
-     @param renderPassDescriptor The Metal render pass descriptor describing the rendering target.
-     */
-    open func render(withViewport viewport: CGRect, commandBuffer: MTLCommandBuffer, renderPassDescriptor: MTLRenderPassDescriptor) {
-        if let renderCommandEncoder = renderCommandEncoder,
-           let pipelineState = pipelineState,
-           let depthStencilState = depthStencilState {
-            renderCommandEncoder.setRenderPipelineState(pipelineState)
-            renderCommandEncoder.setDepthStencilState(depthStencilState)
-            scene?.render(renderCommandEncoder: renderCommandEncoder)
-            renderCommandEncoder.endEncoding()
-        }
-    }
-
-    /**
      Update the scene at the specified system time.
 
      @param currentTime The timestamp in seconds.
@@ -76,7 +58,7 @@ open class EKRenderer: NSObject {
         scene?.update(currentTime)
     }
 
-    // MARK: - Private methods
+    // MARK: - Setup methods
 
     private func setupDefaultRenderer() {
         let pipelineDescriptor = MTLRenderPipelineDescriptor()
@@ -114,6 +96,26 @@ open class EKRenderer: NSObject {
             pipelineState = try device.makeRenderPipelineState(descriptor: pipelineDescriptor)
         } catch {
             print(error.localizedDescription)
+        }
+    }
+    
+    // MARK: - Render Methods
+    
+    /**
+     Render the scene content in the specified Metal command buffer.
+     
+     @param viewport The pixel dimensions in which to render.
+     @param commandBuffer The Metal command buffer in which SpriteKit should schedule rendering commands.
+     @param renderPassDescriptor The Metal render pass descriptor describing the rendering target.
+     */
+    open func render(withViewport viewport: CGRect, commandBuffer: MTLCommandBuffer, renderPassDescriptor: MTLRenderPassDescriptor) {
+        if let renderCommandEncoder = renderCommandEncoder,
+            let pipelineState = pipelineState,
+            let depthStencilState = depthStencilState {
+            renderCommandEncoder.setRenderPipelineState(pipelineState)
+            renderCommandEncoder.setDepthStencilState(depthStencilState)
+            scene?.render(renderCommandEncoder: renderCommandEncoder)
+            renderCommandEncoder.endEncoding()
         }
     }
 
