@@ -7,23 +7,53 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3D0E0C65227D169400D7099A /* EKSceneModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D0E0C47227D169400D7099A /* EKSceneModel.swift */; };
+		3D0E0C66227D169400D7099A /* EKMaterial.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D0E0C48227D169400D7099A /* EKMaterial.swift */; };
+		3D0E0C67227D169400D7099A /* EKNodeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D0E0C49227D169400D7099A /* EKNodeModel.swift */; };
+		3D0E0C68227D169400D7099A /* EKVertex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D0E0C4A227D169400D7099A /* EKVertex.swift */; };
+		3D0E0C69227D169400D7099A /* GPU.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D0E0C4C227D169400D7099A /* GPU.swift */; };
+		3D0E0C6A227D169400D7099A /* Simd+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D0E0C4D227D169400D7099A /* Simd+Extension.swift */; };
+		3D0E0C6B227D169400D7099A /* Math+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D0E0C4E227D169400D7099A /* Math+Extensions.swift */; };
+		3D0E0C6C227D169400D7099A /* EKMesh.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D0E0C4F227D169400D7099A /* EKMesh.swift */; };
+		3D0E0C6D227D169400D7099A /* EKNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D0E0C52227D169400D7099A /* EKNode.swift */; };
+		3D0E0C6E227D169400D7099A /* EKScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D0E0C53227D169400D7099A /* EKScene.swift */; };
+		3D0E0C6F227D169400D7099A /* EKSpriteNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D0E0C54227D169400D7099A /* EKSpriteNode.swift */; };
+		3D0E0C70227D169400D7099A /* EKCameraNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D0E0C56227D169400D7099A /* EKCameraNode.swift */; };
+		3D0E0C71227D169400D7099A /* EKAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D0E0C58227D169400D7099A /* EKAction.swift */; };
+		3D0E0C72227D169400D7099A /* EKPhysicsBody.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D0E0C5A227D169400D7099A /* EKPhysicsBody.swift */; };
+		3D0E0C73227D169400D7099A /* EKTexture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D0E0C5D227D169400D7099A /* EKTexture.swift */; };
+		3D0E0C74227D169400D7099A /* EKTextureFilteringMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D0E0C5E227D169400D7099A /* EKTextureFilteringMode.swift */; };
+		3D0E0C75227D169400D7099A /* EKRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D0E0C5F227D169400D7099A /* EKRenderer.swift */; };
+		3D0E0C76227D169400D7099A /* DefaultTypes.metal in Sources */ = {isa = PBXBuildFile; fileRef = 3D0E0C61227D169400D7099A /* DefaultTypes.metal */; };
+		3D0E0C77227D169400D7099A /* DefaultShaders.metal in Sources */ = {isa = PBXBuildFile; fileRef = 3D0E0C62227D169400D7099A /* DefaultShaders.metal */; };
+		3D0E0C78227D169400D7099A /* EKView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D0E0C64227D169400D7099A /* EKView.swift */; };
 		3D1DC8BF2277D86100144D73 /* EvilKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 3D1DC8BD2277D86100144D73 /* EvilKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		3DDACC09227A1F8700347BFA /* EKView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DDACC08227A1F8700347BFA /* EKView.swift */; };
-		3DDACC0B227A7DC000347BFA /* EKScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DDACC0A227A7DC000347BFA /* EKScene.swift */; };
-		3DDACC0D227A81B900347BFA /* EKNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DDACC0C227A81B900347BFA /* EKNode.swift */; };
-		3DDACC14227A839F00347BFA /* EKPhysicsBody.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DDACC13227A839F00347BFA /* EKPhysicsBody.swift */; };
-		3DDACC17227A83CD00347BFA /* EKAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DDACC16227A83CD00347BFA /* EKAction.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3D0E0C47227D169400D7099A /* EKSceneModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EKSceneModel.swift; sourceTree = "<group>"; };
+		3D0E0C48227D169400D7099A /* EKMaterial.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EKMaterial.swift; sourceTree = "<group>"; };
+		3D0E0C49227D169400D7099A /* EKNodeModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EKNodeModel.swift; sourceTree = "<group>"; };
+		3D0E0C4A227D169400D7099A /* EKVertex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EKVertex.swift; sourceTree = "<group>"; };
+		3D0E0C4C227D169400D7099A /* GPU.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GPU.swift; sourceTree = "<group>"; };
+		3D0E0C4D227D169400D7099A /* Simd+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Simd+Extension.swift"; sourceTree = "<group>"; };
+		3D0E0C4E227D169400D7099A /* Math+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Math+Extensions.swift"; sourceTree = "<group>"; };
+		3D0E0C4F227D169400D7099A /* EKMesh.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EKMesh.swift; sourceTree = "<group>"; };
+		3D0E0C52227D169400D7099A /* EKNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EKNode.swift; sourceTree = "<group>"; };
+		3D0E0C53227D169400D7099A /* EKScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EKScene.swift; sourceTree = "<group>"; };
+		3D0E0C54227D169400D7099A /* EKSpriteNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EKSpriteNode.swift; sourceTree = "<group>"; };
+		3D0E0C56227D169400D7099A /* EKCameraNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EKCameraNode.swift; sourceTree = "<group>"; };
+		3D0E0C58227D169400D7099A /* EKAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EKAction.swift; sourceTree = "<group>"; };
+		3D0E0C5A227D169400D7099A /* EKPhysicsBody.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EKPhysicsBody.swift; sourceTree = "<group>"; };
+		3D0E0C5D227D169400D7099A /* EKTexture.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EKTexture.swift; sourceTree = "<group>"; };
+		3D0E0C5E227D169400D7099A /* EKTextureFilteringMode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EKTextureFilteringMode.swift; sourceTree = "<group>"; };
+		3D0E0C5F227D169400D7099A /* EKRenderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EKRenderer.swift; sourceTree = "<group>"; };
+		3D0E0C61227D169400D7099A /* DefaultTypes.metal */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.metal; path = DefaultTypes.metal; sourceTree = "<group>"; };
+		3D0E0C62227D169400D7099A /* DefaultShaders.metal */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.metal; path = DefaultShaders.metal; sourceTree = "<group>"; };
+		3D0E0C64227D169400D7099A /* EKView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EKView.swift; sourceTree = "<group>"; };
 		3D1DC8BA2277D86100144D73 /* EvilKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = EvilKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3D1DC8BD2277D86100144D73 /* EvilKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EvilKit.h; sourceTree = "<group>"; };
 		3D1DC8BE2277D86100144D73 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		3DDACC08227A1F8700347BFA /* EKView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EKView.swift; sourceTree = "<group>"; };
-		3DDACC0A227A7DC000347BFA /* EKScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EKScene.swift; sourceTree = "<group>"; };
-		3DDACC0C227A81B900347BFA /* EKNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EKNode.swift; sourceTree = "<group>"; };
-		3DDACC13227A839F00347BFA /* EKPhysicsBody.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EKPhysicsBody.swift; sourceTree = "<group>"; };
-		3DDACC16227A83CD00347BFA /* EKAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EKAction.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -37,6 +67,118 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3D0E0C45227D169400D7099A /* Metal */ = {
+			isa = PBXGroup;
+			children = (
+				3D0E0C46227D169400D7099A /* Types */,
+			);
+			path = Metal;
+			sourceTree = "<group>";
+		};
+		3D0E0C46227D169400D7099A /* Types */ = {
+			isa = PBXGroup;
+			children = (
+				3D0E0C47227D169400D7099A /* EKSceneModel.swift */,
+				3D0E0C48227D169400D7099A /* EKMaterial.swift */,
+				3D0E0C49227D169400D7099A /* EKNodeModel.swift */,
+				3D0E0C4A227D169400D7099A /* EKVertex.swift */,
+			);
+			path = Types;
+			sourceTree = "<group>";
+		};
+		3D0E0C4B227D169400D7099A /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				3D0E0C4C227D169400D7099A /* GPU.swift */,
+				3D0E0C4D227D169400D7099A /* Simd+Extension.swift */,
+				3D0E0C4E227D169400D7099A /* Math+Extensions.swift */,
+				3D0E0C4F227D169400D7099A /* EKMesh.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		3D0E0C50227D169400D7099A /* Engine */ = {
+			isa = PBXGroup;
+			children = (
+				3D0E0C51227D169400D7099A /* Nodes */,
+				3D0E0C55227D169400D7099A /* Camera */,
+				3D0E0C57227D169400D7099A /* Actions */,
+				3D0E0C59227D169400D7099A /* Physics */,
+			);
+			path = Engine;
+			sourceTree = "<group>";
+		};
+		3D0E0C51227D169400D7099A /* Nodes */ = {
+			isa = PBXGroup;
+			children = (
+				3D0E0C52227D169400D7099A /* EKNode.swift */,
+				3D0E0C53227D169400D7099A /* EKScene.swift */,
+				3D0E0C54227D169400D7099A /* EKSpriteNode.swift */,
+			);
+			path = Nodes;
+			sourceTree = "<group>";
+		};
+		3D0E0C55227D169400D7099A /* Camera */ = {
+			isa = PBXGroup;
+			children = (
+				3D0E0C56227D169400D7099A /* EKCameraNode.swift */,
+			);
+			path = Camera;
+			sourceTree = "<group>";
+		};
+		3D0E0C57227D169400D7099A /* Actions */ = {
+			isa = PBXGroup;
+			children = (
+				3D0E0C58227D169400D7099A /* EKAction.swift */,
+			);
+			path = Actions;
+			sourceTree = "<group>";
+		};
+		3D0E0C59227D169400D7099A /* Physics */ = {
+			isa = PBXGroup;
+			children = (
+				3D0E0C5A227D169400D7099A /* EKPhysicsBody.swift */,
+			);
+			path = Physics;
+			sourceTree = "<group>";
+		};
+		3D0E0C5B227D169400D7099A /* Graphics */ = {
+			isa = PBXGroup;
+			children = (
+				3D0E0C5C227D169400D7099A /* Renderer */,
+				3D0E0C60227D169400D7099A /* Shaders */,
+				3D0E0C63227D169400D7099A /* View */,
+			);
+			path = Graphics;
+			sourceTree = "<group>";
+		};
+		3D0E0C5C227D169400D7099A /* Renderer */ = {
+			isa = PBXGroup;
+			children = (
+				3D0E0C5D227D169400D7099A /* EKTexture.swift */,
+				3D0E0C5E227D169400D7099A /* EKTextureFilteringMode.swift */,
+				3D0E0C5F227D169400D7099A /* EKRenderer.swift */,
+			);
+			path = Renderer;
+			sourceTree = "<group>";
+		};
+		3D0E0C60227D169400D7099A /* Shaders */ = {
+			isa = PBXGroup;
+			children = (
+				3D0E0C61227D169400D7099A /* DefaultTypes.metal */,
+				3D0E0C62227D169400D7099A /* DefaultShaders.metal */,
+			);
+			path = Shaders;
+			sourceTree = "<group>";
+		};
+		3D0E0C63227D169400D7099A /* View */ = {
+			isa = PBXGroup;
+			children = (
+				3D0E0C64227D169400D7099A /* EKView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		3D1DC8B02277D86100144D73 = {
 			isa = PBXGroup;
 			children = (
@@ -56,47 +198,14 @@
 		3D1DC8BC2277D86100144D73 /* EvilKit */ = {
 			isa = PBXGroup;
 			children = (
-				3DDACC0F227A836C00347BFA /* View */,
-				3DDACC15227A83C700347BFA /* Actions */,
-				3DDACC12227A838400347BFA /* Physics */,
-				3DDACC0E227A836000347BFA /* Nodes */,
+				3D0E0C50227D169400D7099A /* Engine */,
+				3D0E0C5B227D169400D7099A /* Graphics */,
+				3D0E0C45227D169400D7099A /* Metal */,
+				3D0E0C4B227D169400D7099A /* Utils */,
 				3D1DC8BD2277D86100144D73 /* EvilKit.h */,
 				3D1DC8BE2277D86100144D73 /* Info.plist */,
 			);
 			path = EvilKit;
-			sourceTree = "<group>";
-		};
-		3DDACC0E227A836000347BFA /* Nodes */ = {
-			isa = PBXGroup;
-			children = (
-				3DDACC0A227A7DC000347BFA /* EKScene.swift */,
-				3DDACC0C227A81B900347BFA /* EKNode.swift */,
-			);
-			path = Nodes;
-			sourceTree = "<group>";
-		};
-		3DDACC0F227A836C00347BFA /* View */ = {
-			isa = PBXGroup;
-			children = (
-				3DDACC08227A1F8700347BFA /* EKView.swift */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		3DDACC12227A838400347BFA /* Physics */ = {
-			isa = PBXGroup;
-			children = (
-				3DDACC13227A839F00347BFA /* EKPhysicsBody.swift */,
-			);
-			path = Physics;
-			sourceTree = "<group>";
-		};
-		3DDACC15227A83C700347BFA /* Actions */ = {
-			isa = PBXGroup;
-			children = (
-				3DDACC16227A83CD00347BFA /* EKAction.swift */,
-			);
-			path = Actions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -178,11 +287,26 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3DDACC0D227A81B900347BFA /* EKNode.swift in Sources */,
-				3DDACC0B227A7DC000347BFA /* EKScene.swift in Sources */,
-				3DDACC09227A1F8700347BFA /* EKView.swift in Sources */,
-				3DDACC17227A83CD00347BFA /* EKAction.swift in Sources */,
-				3DDACC14227A839F00347BFA /* EKPhysicsBody.swift in Sources */,
+				3D0E0C6B227D169400D7099A /* Math+Extensions.swift in Sources */,
+				3D0E0C74227D169400D7099A /* EKTextureFilteringMode.swift in Sources */,
+				3D0E0C72227D169400D7099A /* EKPhysicsBody.swift in Sources */,
+				3D0E0C6A227D169400D7099A /* Simd+Extension.swift in Sources */,
+				3D0E0C66227D169400D7099A /* EKMaterial.swift in Sources */,
+				3D0E0C65227D169400D7099A /* EKSceneModel.swift in Sources */,
+				3D0E0C6F227D169400D7099A /* EKSpriteNode.swift in Sources */,
+				3D0E0C6E227D169400D7099A /* EKScene.swift in Sources */,
+				3D0E0C75227D169400D7099A /* EKRenderer.swift in Sources */,
+				3D0E0C6C227D169400D7099A /* EKMesh.swift in Sources */,
+				3D0E0C78227D169400D7099A /* EKView.swift in Sources */,
+				3D0E0C77227D169400D7099A /* DefaultShaders.metal in Sources */,
+				3D0E0C67227D169400D7099A /* EKNodeModel.swift in Sources */,
+				3D0E0C70227D169400D7099A /* EKCameraNode.swift in Sources */,
+				3D0E0C6D227D169400D7099A /* EKNode.swift in Sources */,
+				3D0E0C73227D169400D7099A /* EKTexture.swift in Sources */,
+				3D0E0C68227D169400D7099A /* EKVertex.swift in Sources */,
+				3D0E0C69227D169400D7099A /* GPU.swift in Sources */,
+				3D0E0C71227D169400D7099A /* EKAction.swift in Sources */,
+				3D0E0C76227D169400D7099A /* DefaultTypes.metal in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
