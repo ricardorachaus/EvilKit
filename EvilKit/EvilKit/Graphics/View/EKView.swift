@@ -2,88 +2,89 @@
 //  EKView.swift
 //  EvilKit
 //
-//  Created by Ricardo Rachaus on 01/05/19.
-//  Copyright © 2019 Ricardo Rachaus. All rights reserved.
+//  Created by Ricardo Rachaus on 07/05/19.
+//  Copyright © 2019 rachaus. All rights reserved.
 //
 
 import MetalKit
 
-
-import SpriteKit
-
 open class EKView: MTKView {
-    
+
+    open override var acceptsFirstResponder: Bool {
+        return true
+    }
+
     /**
      The currently presented scene, otherwise nil. If in a transition, the 'incoming' scene is returned.
      */
-    open var scene: EKScene? {
-        return scenes.first
+    private(set) open var scene: EKScene? {
+        willSet {
+            renderer?.scene = newValue
+            newValue?.view = self
+        }
     }
-    
+
+
     private var currentTime: TimeInterval = 0
     private var scenes: [EKScene]
-    private let renderer: EKRenderer
-    
-    init(frame: CGRect) {
-        renderer = EKRenderer(device: GPU.device)
-        scenes = []
+    private var renderer: EKRenderer?
+    private var commandQueue: MTLCommandQueue?
+
+    public init(frame: CGRect) {
+        self.scenes = []
         super.init(frame: frame, device: GPU.device)
-        
-        self.clearColor = EKColor.white
-        self.colorPixelFormat = .bgra8Unorm
-        self.depthStencilPixelFormat = .depth32Float
-        self.delegate = self
+        setupView()
     }
-    
+
     public required init(coder: NSCoder) {
-        renderer = EKRenderer(device: GPU.device)
-        scenes = []
+        self.scenes = []
         super.init(coder: coder)
         self.device = GPU.device
-        self.clearColor = EKColor.white
-        self.colorPixelFormat = .bgra8Unorm
-        self.depthStencilPixelFormat = .depth32Float
-        self.delegate = self
+        setupView()
     }
-    
+
     /**
-     Present an EKScene in the view, replacing the current scene.
-     
+     Present an SKScene in the view, replacing the current scene.
+
      @param scene the scene to present.
      */
     open func presentScene(_ scene: EKScene?) {
+        self.scene = scene
         if let scene = scene {
             clearColor = scene.backgroundColor
-            scene.view = self
-            renderer.scene = scene
-            scenes.insert(scene, at: scenes.startIndex)
+            scenes.append(scene)
         }
     }
-    
+
+    private func setupView() {
+        self.commandQueue = GPU.device.makeCommandQueue()
+        self.colorPixelFormat = .bgra8Unorm_srgb
+        self.renderer = EKRenderer(device: GPU.device)
+        self.clearColor = EKColor.black.metalColor
+        self.delegate = self
+    }
+
 }
 
 extension EKView: MTKViewDelegate {
 
     public func mtkView(_ view: MTKView, drawableSizeWillChange size: CGSize) {
-        scene?.didChangeSize(view.drawableSize)
+        scene?.didChangeSize(view.bounds.size)
     }
 
     public func draw(in view: MTKView) {
         guard let renderPassDescriptor = view.currentRenderPassDescriptor,
               let drawable = view.currentDrawable,
-              let commandBuffer = renderer.commandQueue?.makeCommandBuffer() else {
-            return
+              let commandBuffer = commandQueue?.makeCommandBuffer() else {
+                return
         }
 
-        renderer.renderCommandEncoder = commandBuffer.makeRenderCommandEncoder(descriptor: renderPassDescriptor)
-
         currentTime += 1 / Double(view.preferredFramesPerSecond)
-        renderer.update(atTime: currentTime)
-        scene?.update(currentTime)
+        renderer?.update(atTime: currentTime)
 
-        renderer.render(withViewport: view.bounds.standardized, commandBuffer: commandBuffer, renderPassDescriptor: renderPassDescriptor)
-
+        renderer?.render(withViewport: CGRect.zero, commandBuffer: commandBuffer, renderPassDescriptor: renderPassDescriptor)
         commandBuffer.present(drawable)
         commandBuffer.commit()
     }
+
 }

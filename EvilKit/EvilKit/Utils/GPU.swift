@@ -1,13 +1,13 @@
 //
-//  DefaultDevice.swift
+//  GPU.swift
 //  EvilKit
 //
-//  Created by Ricardo Rachaus on 03/05/19.
-//  Copyright © 2019 Ricardo Rachaus. All rights reserved.
+//  Created by Ricardo Rachaus on 07/05/19.
+//  Copyright © 2019 rachaus. All rights reserved.
 //
 
-import MetalKit
+import Foundation
 
 internal struct GPU {
-    internal static let device = MTLCreateSystemDefaultDevice()!
+    static let device = MTLCreateSystemDefaultDevice()!
 }
