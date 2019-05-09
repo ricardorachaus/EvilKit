@@ -8,6 +8,9 @@
 
 import MetalKit
 
+
+import SpriteKit
+
 open class EKTexture: NSObject {
 
     open var filteringMode: EKTextureFilteringMode = .linear {
@@ -16,8 +19,9 @@ open class EKTexture: NSObject {
         }
     }
 
+    internal var mesh: EKMesh
+    
     private var name: String
-    private var mesh: EKMesh
     private var material: EKMaterial
     private var texture: MTLTexture?
     private var samplerState: MTLSamplerState?
@@ -37,6 +41,7 @@ open class EKTexture: NSObject {
         self.name = name
         self.samplerState = GPU.device.makeSamplerState(descriptor: self.samplerDescriptor)
         loadTexture(named: name)
+        updateMesh()
     }
 
     internal func render(renderCommandEncoder: MTLRenderCommandEncoder) {
@@ -71,6 +76,12 @@ open class EKTexture: NSObject {
             }
         } else {
             print("Invalid file format: \(named)")
+        }
+    }
+
+    private func updateMesh() {
+        if let texture = texture {
+            mesh = EKQuadMesh(size: CGSize(width: texture.width, height: texture.height))
         }
     }
 

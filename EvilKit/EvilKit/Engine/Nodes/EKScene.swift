@@ -34,7 +34,7 @@ open class EKScene: EKNode {
     /**
      Background color, defaults to gray
      */
-    open var backgroundColor: MTLClearColor
+    open var backgroundColor: EKColor
 
     /**
      Used to choose the origin of the scene's coordinate system
@@ -58,7 +58,7 @@ open class EKScene: EKNode {
     public init(size: CGSize) {
         self.size = size
         self.audioEngine = AVAudioEngine()
-        self.backgroundColor = EKColor.black.metalColor
+        self.backgroundColor = EKColor.defaultColor
         self.anchorPoint = CGPoint.zero
         self.sceneTransform = EKSceneTransform()
         super.init()
@@ -67,7 +67,7 @@ open class EKScene: EKNode {
     public required init?(coder: NSCoder) {
         self.size = CGSize.zero
         self.audioEngine = AVAudioEngine()
-        self.backgroundColor = EKColor.black.metalColor
+        self.backgroundColor = EKColor.defaultColor
         self.anchorPoint = CGPoint.zero
         self.sceneTransform = EKSceneTransform()
         super.init(coder: coder)
@@ -76,29 +76,24 @@ open class EKScene: EKNode {
     /* This is called once after the scene has been initialized or decoded,
      this is the recommended place to perform one-time setup */
     @available(OSX 10.12, *)
-    open func sceneDidLoad() {
-
-    }
+    open func sceneDidLoad() {}
 
     /**
      Override this to perform per-frame game logic. Called exactly once per frame before any actions are evaluated and any physics are simulated.
 
      @param currentTime the current time in the app. This must be monotonically increasing.
      */
-    open func update(_ currentTime: TimeInterval) {
+    open func update(_ currentTime: TimeInterval) {}
 
-    }
+    open func didMove(to view: EKView) {}
 
-    open func didMove(to view: EKView) {
+    open func willMove(from view: EKView) {}
 
-    }
+    open func didChangeSize(_ oldSize: CGSize) {}
 
-    open func willMove(from view: EKView) {
-
-    }
-
-    open func didChangeSize(_ oldSize: CGSize) {
-
+    open override func addChild(_ node: EKNode) {
+        super.addChild(node)
+        node.scene = self
     }
 
     internal func updateScene() {
@@ -106,11 +101,6 @@ open class EKScene: EKNode {
             sceneTransform.viewMatrix = camera.viewMatrix
             sceneTransform.projectionMatrix = camera.projectionMatrix
         }
-    }
-
-    open override func addChild(_ node: EKNode) {
-        super.addChild(node)
-        node.scene = self
     }
 
     override internal func render(renderCommandEncoder: MTLRenderCommandEncoder) {

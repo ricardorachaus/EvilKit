@@ -12,9 +12,11 @@ final class GameScene: EKScene {
 
     override init(size: CGSize) {
         super.init(size: size)
+        backgroundColor = .white
         camera = EKDebugCamera()
-        let node = EKSpriteNode(named: "mario.png")
-        node.setScale(0.1)
+//        let node = EKSpriteNode(named: "mario.png")
+        let node = EKShapeNode(rectOf: CGSize(width: 100, height: 100))
+//        node.setScale(0.3)
         addChild(node)
     }
 

@@ -87,6 +87,7 @@ open class EKNode: NSResponder {
      */
     internal(set) open var scene: EKScene?
 
+    internal var mesh: EKMesh?
     internal var parentMatrix: matrix_float4x4 = matrix_identity_float4x4
     internal var transform: EKNodeTransform
     internal var nodePosition: float3 = float3(0, 0, 0)
@@ -188,6 +189,13 @@ open class EKNode: NSResponder {
     }
 
     // MARK: - Render Methods
+
+    internal func updateScreen(size: CGSize) {
+        mesh?.screenSize = size
+        children.forEach {
+            $0.updateScreen(size: size)
+        }
+    }
 
     internal func updateNodeMatrix() {
         children.forEach {

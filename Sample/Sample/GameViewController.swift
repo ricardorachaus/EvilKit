@@ -13,7 +13,8 @@ class GameViewController: NSViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         let view = self.view as! EKView
-        view.presentScene(GameScene(size: view.bounds.size))
+        let scene = GameScene(size: view.bounds.size)
+        view.presentScene(scene)
     }
 }
 

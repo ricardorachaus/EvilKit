@@ -12,14 +12,10 @@ open class EKSpriteNode: EKNode {
 
     open var texture: EKTexture?
 
-    public override init() {
-        super.init()
-        texture = EKTexture()
-    }
-
     public init(named: String) {
         super.init()
         texture = EKTexture(imageNamed: named)
+        self.mesh = texture?.mesh
     }
 
     public required init?(coder: NSCoder) {

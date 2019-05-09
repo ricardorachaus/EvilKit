@@ -51,7 +51,7 @@ open class EKView: MTKView {
     open func presentScene(_ scene: EKScene?) {
         self.scene = scene
         if let scene = scene {
-            clearColor = scene.backgroundColor
+            clearColor = scene.backgroundColor.metalColor
             scenes.append(scene)
         }
     }
@@ -62,6 +62,7 @@ open class EKView: MTKView {
         self.renderer = EKRenderer(device: GPU.device)
         self.clearColor = EKColor.black.metalColor
         self.delegate = self
+        self.scene?.updateScreen(size: bounds.size)
     }
 
 }
@@ -70,6 +71,7 @@ extension EKView: MTKViewDelegate {
 
     public func mtkView(_ view: MTKView, drawableSizeWillChange size: CGSize) {
         scene?.didChangeSize(view.bounds.size)
+        scene?.updateScreen(size: size)
     }
 
     public func draw(in view: MTKView) {

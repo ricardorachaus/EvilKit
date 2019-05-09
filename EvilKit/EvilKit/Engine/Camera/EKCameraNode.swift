@@ -12,7 +12,7 @@ open class EKCameraNode: EKNode {
 
     internal var viewMatrix: matrix_float4x4 {
         var viewMatrix = matrix_identity_float4x4
-        viewMatrix.translate(direction: nodePosition)
+        viewMatrix.translate(direction: -nodePosition)
         return viewMatrix
     }
 

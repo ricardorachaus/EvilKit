@@ -1,6 +1,6 @@
 # EvilKit
 
-### Current status - Rendering image.
+### Current status - SpriteNode and Rect ShapeNode with proportions.
 
 A reimplemation of Apple's SpriteKit for personal purposes of study of Metal and Game Engine development.
 In any way this is supose to replace SpriteKit, since Apple's framework has probably much better code and optimizations.

@@ -11,6 +11,7 @@
 		5D0C43052281B60F004383C9 /* EKScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D0C43042281B60F004383C9 /* EKScene.swift */; };
 		5D0C43072281B827004383C9 /* EKVertex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D0C43062281B827004383C9 /* EKVertex.swift */; };
 		5D0C430B2281BD0D004383C9 /* DefaultShaders.metal in Sources */ = {isa = PBXBuildFile; fileRef = 5D0C430A2281BD0D004383C9 /* DefaultShaders.metal */; };
+		5D4AA5C422837D1D009CD28B /* CoreGraphics+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D4AA5C322837D1D009CD28B /* CoreGraphics+Extensions.swift */; };
 		5D8786BB2281B384000E2782 /* EvilKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 5D8786B92281B384000E2782 /* EvilKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5DC10BEE2281C4DB00E55447 /* EKRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DC10BED2281C4DB00E55447 /* EKRenderer.swift */; };
 		5DC10BF32281C74900E55447 /* EKShapeNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DC10BF22281C74900E55447 /* EKShapeNode.swift */; };
@@ -38,6 +39,7 @@
 		5D0C43042281B60F004383C9 /* EKScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EKScene.swift; sourceTree = "<group>"; };
 		5D0C43062281B827004383C9 /* EKVertex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EKVertex.swift; sourceTree = "<group>"; };
 		5D0C430A2281BD0D004383C9 /* DefaultShaders.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = DefaultShaders.metal; sourceTree = "<group>"; };
+		5D4AA5C322837D1D009CD28B /* CoreGraphics+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CoreGraphics+Extensions.swift"; sourceTree = "<group>"; };
 		5D8786B62281B384000E2782 /* EvilKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = EvilKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5D8786B92281B384000E2782 /* EvilKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EvilKit.h; sourceTree = "<group>"; };
 		5D8786BA2281B384000E2782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -114,8 +116,8 @@
 		5DC10BEF2281C73A00E55447 /* Engine */ = {
 			isa = PBXGroup;
 			children = (
-				5DCD502822820E8500CB0A68 /* Camera */,
 				5DCD501F228201E300CB0A68 /* Nodes */,
+				5DCD502822820E8500CB0A68 /* Camera */,
 			);
 			path = Engine;
 			sourceTree = "<group>";
@@ -164,6 +166,7 @@
 			children = (
 				5DC10C012281D14300E55447 /* simd+Extension.swift */,
 				5DC10C052281D23200E55447 /* Math+Extension.swift */,
+				5D4AA5C322837D1D009CD28B /* CoreGraphics+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -317,6 +320,7 @@
 				5DC10C042281D1A000E55447 /* EKColor.swift in Sources */,
 				5DC10BF32281C74900E55447 /* EKShapeNode.swift in Sources */,
 				5DCD5031228214B400CB0A68 /* EKNode+Input.swift in Sources */,
+				5D4AA5C422837D1D009CD28B /* CoreGraphics+Extensions.swift in Sources */,
 				5DCD501D2281FF6500CB0A68 /* EKMaterial.swift in Sources */,
 				5DCD502E228210A800CB0A68 /* EKDebugCamera.swift in Sources */,
 				5DCD5034228217A500CB0A68 /* EKView+Input.swift in Sources */,
