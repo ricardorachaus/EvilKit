@@ -10,6 +10,5 @@ import simd
 
 internal struct EKVertex: Sizeable {
     internal var position: float3
-    internal var color: float4
     internal var textureCoordinate: float2
 }

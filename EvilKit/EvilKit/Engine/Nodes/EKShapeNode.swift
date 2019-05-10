@@ -15,7 +15,7 @@ open class EKShapeNode: EKNode {
      */
     open var strokeColor: EKColor {
         willSet {
-            mesh?.strokeColor = newValue.colorVector()
+            material.strokeColor = newValue.colorVector()
         }
     }
 
@@ -24,7 +24,7 @@ open class EKShapeNode: EKNode {
      */
     open var fillColor: EKColor {
         willSet {
-            mesh?.fillColor = newValue.colorVector()
+            material.fillColor = newValue.colorVector()
         }
     }
 
@@ -45,6 +45,15 @@ open class EKShapeNode: EKNode {
         super.init(coder: coder)
     }
 
+    /* Create a Shape Node representing a Rect. */
+    @available(OSX 10.10, *)
+    public convenience init(rect: CGRect) {
+        let size = CGSize(width: rect.width, height: rect.height)
+        let position = rect.origin
+        self.init(rectOf: size)
+        self.position = position
+    }
+
     /* Create a Shape Node representing a rect centered at the Node's origin. */
     @available(OSX 10.10, *)
     public convenience init(rectOf size: CGSize) {
@@ -54,10 +63,26 @@ open class EKShapeNode: EKNode {
     }
 
 
+    /* Create a Shape Node representing a rounded rect with a corner radius */
+    @available(OSX 10.10, *)
+    public convenience init(rect: CGRect, cornerRadius: CGFloat) {
+        self.init(rect: rect)
+    }
+
+
+    /* Create a Shape Node representing a rounded rect with a corner radius centered at the Node's origin. */
+    @available(OSX 10.10, *)
+    public convenience init(rectOf size: CGSize, cornerRadius: CGFloat) {
+        self.init(rectOf: size)
+    }
+
+
     /* Create a Shape Node representing an circle centered at the Node's origin. */
     @available(OSX 10.10, *)
     public convenience init(circleOfRadius radius: CGFloat) {
         self.init()
+        material = EKMaterial(isCircular: true)
+        mesh = EKCircularMesh(size: CGSize(width: radius * 2, height: radius * 2))
     }
 
     override internal func render(renderCommandEncoder: MTLRenderCommandEncoder) {

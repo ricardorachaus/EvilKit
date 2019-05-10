@@ -9,13 +9,18 @@
 import simd
 
 internal struct EKMaterial: Sizeable {
-    internal var color: float4 = float4(1, 0, 0, 1)
-    internal var useMaterialColor: Bool = false
+    internal var strokeColor: float4 = float4(0, 0, 0, 1)
+    internal var fillColor: float4 = float4(1, 0, 0, 1)
     internal var useTexture: Bool = false
+    internal var isCircular: Bool = false
 
     internal init() {}
 
     internal init(useTexture: Bool) {
         self.useTexture = useTexture
+    }
+
+    internal init(isCircular: Bool) {
+        self.isCircular = isCircular
     }
 }

@@ -9,5 +9,5 @@
 import simd
 
 internal struct EKNodeTransform: Sizeable {
-    var matrix = matrix_identity_float4x4
+    var modelMatrix = matrix_identity_float4x4
 }

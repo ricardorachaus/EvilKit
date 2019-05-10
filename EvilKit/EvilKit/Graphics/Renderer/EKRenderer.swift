@@ -74,13 +74,9 @@ open class EKRenderer : NSObject {
         vertexDescriptor.attributes[0].bufferIndex = 0
         vertexDescriptor.attributes[0].offset = 0
 
-        vertexDescriptor.attributes[1].format = .float4
+        vertexDescriptor.attributes[1].format = .float2
         vertexDescriptor.attributes[1].bufferIndex = 0
         vertexDescriptor.attributes[1].offset = float3.size
-
-        vertexDescriptor.attributes[2].format = .float2
-        vertexDescriptor.attributes[2].bufferIndex = 0
-        vertexDescriptor.attributes[2].offset = float3.size + float4.size
 
         vertexDescriptor.layouts[0].stride = EKVertex.stride
 
@@ -89,6 +85,14 @@ open class EKRenderer : NSObject {
         renderPipelineDescriptor.vertexFunction = library.makeFunction(name: "default_vertex_shader")
         renderPipelineDescriptor.fragmentFunction = library.makeFunction(name: "default_fragment_shader")
         renderPipelineDescriptor.vertexDescriptor = vertexDescriptor
+
+        renderPipelineDescriptor.colorAttachments[0].rgbBlendOperation = .add
+        renderPipelineDescriptor.colorAttachments[0].alphaBlendOperation = .add
+        renderPipelineDescriptor.colorAttachments[0].sourceRGBBlendFactor = .sourceAlpha
+        renderPipelineDescriptor.colorAttachments[0].sourceAlphaBlendFactor = .sourceAlpha
+
+        renderPipelineDescriptor.colorAttachments[0].destinationRGBBlendFactor = .oneMinusSourceAlpha
+        renderPipelineDescriptor.colorAttachments[0].destinationAlphaBlendFactor = .oneMinusSourceAlpha
 
         do {
             renderPipelineState = try device.makeRenderPipelineState(descriptor: renderPipelineDescriptor)

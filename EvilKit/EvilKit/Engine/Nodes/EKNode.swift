@@ -202,7 +202,7 @@ open class EKNode: NSResponder {
             $0.parentMatrix = nodeMatrix
             $0.updateNodeMatrix()
         }
-        transform.matrix = nodeMatrix
+        transform.modelMatrix = nodeMatrix
     }
 
     internal func render(renderCommandEncoder: MTLRenderCommandEncoder) {

@@ -83,8 +83,8 @@ extension EKView: MTKViewDelegate {
 
         currentTime += 1 / Double(view.preferredFramesPerSecond)
         renderer?.update(atTime: currentTime)
-
         renderer?.render(withViewport: CGRect.zero, commandBuffer: commandBuffer, renderPassDescriptor: renderPassDescriptor)
+
         commandBuffer.present(drawable)
         commandBuffer.commit()
     }
