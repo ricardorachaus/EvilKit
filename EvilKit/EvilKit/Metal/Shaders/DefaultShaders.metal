@@ -69,7 +69,7 @@ fragment half4 default_fragment_shader(EKRasterizerData data [[ stage_in ]],
         }
     }
 
-    //
+    // Rect and texture fragment shader
     if (material.useTexture) {
         float4 resultColor = texture.sample(sampler2d, textureCoordinate);
         if (resultColor.a < kAlphaTestReferenceValue) {

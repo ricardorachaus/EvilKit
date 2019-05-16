@@ -21,3 +21,9 @@ internal extension CGFloat {
         return Float(self)
     }
 }
+
+internal extension Double {
+    var asCGFloat: CGFloat {
+        return CGFloat(self)
+    }
+}

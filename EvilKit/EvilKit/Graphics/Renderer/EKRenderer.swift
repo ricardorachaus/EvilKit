@@ -55,6 +55,7 @@ open class EKRenderer : NSObject {
      */
     open func update(atTime currentTime: TimeInterval) {
         scene?.update(currentTime)
+        scene?.physicsWorld.update(currentTime: currentTime)
     }
 
     private func setup() {

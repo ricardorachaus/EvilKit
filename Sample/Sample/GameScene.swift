@@ -14,8 +14,9 @@ final class GameScene: EKScene {
         super.init(size: size)
         backgroundColor = .white
         camera = EKDebugCamera()
-//        let node = EKSpriteNode(named: "mario.png")
+        //    let node = EKSpriteNode(named: "mario.png")
         let node = EKShapeNode(circleOfRadius: 100)
+        node.physicsBody = EKPhysicsBody(rectangleOf: CGSize(width: 100, height: 100))
 //        node.setScale(0.3)
         addChild(node)
     }

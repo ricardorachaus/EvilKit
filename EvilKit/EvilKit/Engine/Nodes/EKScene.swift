@@ -50,6 +50,11 @@ open class EKScene: EKNode {
     internal var sceneTransform: EKSceneTransform
 
     /**
+     Physics simulation functionality
+     */
+    internal(set) open var physicsWorld: EKPhysicsWorld
+
+    /**
      A scene is infinitely large, but it has a viewport that is the frame through which you present the content of the scene.
      The passed in size defines the size of this viewport that you use to present the scene.
 
@@ -61,6 +66,7 @@ open class EKScene: EKNode {
         self.backgroundColor = EKColor.defaultColor
         self.anchorPoint = CGPoint.zero
         self.sceneTransform = EKSceneTransform()
+        self.physicsWorld = EKPhysicsWorld()
         super.init()
     }
 
@@ -70,6 +76,7 @@ open class EKScene: EKNode {
         self.backgroundColor = EKColor.defaultColor
         self.anchorPoint = CGPoint.zero
         self.sceneTransform = EKSceneTransform()
+        self.physicsWorld = EKPhysicsWorld()
         super.init(coder: coder)
     }
 
@@ -94,6 +101,9 @@ open class EKScene: EKNode {
     open override func addChild(_ node: EKNode) {
         super.addChild(node)
         node.scene = self
+        if let body = node.physicsBody {
+            physicsWorld.bodies.append(body)
+        }
     }
 
     internal func updateScene() {

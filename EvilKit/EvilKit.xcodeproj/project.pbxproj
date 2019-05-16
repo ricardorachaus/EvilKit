@@ -11,6 +11,12 @@
 		5D0C43052281B60F004383C9 /* EKScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D0C43042281B60F004383C9 /* EKScene.swift */; };
 		5D0C43072281B827004383C9 /* EKVertex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D0C43062281B827004383C9 /* EKVertex.swift */; };
 		5D0C430B2281BD0D004383C9 /* DefaultShaders.metal in Sources */ = {isa = PBXBuildFile; fileRef = 5D0C430A2281BD0D004383C9 /* DefaultShaders.metal */; };
+		5D160AA12289D69900C1C0DE /* EKPhysicsShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D160AA02289D69900C1C0DE /* EKPhysicsShape.swift */; };
+		5D160AA62289E8ED00C1C0DE /* EKAABB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D160AA52289E8ED00C1C0DE /* EKAABB.swift */; };
+		5D3380712285AFB7004B66DC /* EKPhysicsWorld.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D3380702285AFB7004B66DC /* EKPhysicsWorld.swift */; };
+		5D3380732285AFBE004B66DC /* EKPhysicsBody.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D3380722285AFBE004B66DC /* EKPhysicsBody.swift */; };
+		5D3380752285B013004B66DC /* EKPhysicsContactDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D3380742285B013004B66DC /* EKPhysicsContactDelegate.swift */; };
+		5D3380772285B029004B66DC /* EKPhysicsContact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D3380762285B029004B66DC /* EKPhysicsContact.swift */; };
 		5D4AA5C422837D1D009CD28B /* CoreGraphics+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D4AA5C322837D1D009CD28B /* CoreGraphics+Extensions.swift */; };
 		5D8786BB2281B384000E2782 /* EvilKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 5D8786B92281B384000E2782 /* EvilKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5DC10BEE2281C4DB00E55447 /* EKRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DC10BED2281C4DB00E55447 /* EKRenderer.swift */; };
@@ -39,6 +45,12 @@
 		5D0C43042281B60F004383C9 /* EKScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EKScene.swift; sourceTree = "<group>"; };
 		5D0C43062281B827004383C9 /* EKVertex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EKVertex.swift; sourceTree = "<group>"; };
 		5D0C430A2281BD0D004383C9 /* DefaultShaders.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = DefaultShaders.metal; sourceTree = "<group>"; };
+		5D160AA02289D69900C1C0DE /* EKPhysicsShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EKPhysicsShape.swift; sourceTree = "<group>"; };
+		5D160AA52289E8ED00C1C0DE /* EKAABB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EKAABB.swift; sourceTree = "<group>"; };
+		5D3380702285AFB7004B66DC /* EKPhysicsWorld.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EKPhysicsWorld.swift; sourceTree = "<group>"; };
+		5D3380722285AFBE004B66DC /* EKPhysicsBody.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EKPhysicsBody.swift; sourceTree = "<group>"; };
+		5D3380742285B013004B66DC /* EKPhysicsContactDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EKPhysicsContactDelegate.swift; sourceTree = "<group>"; };
+		5D3380762285B029004B66DC /* EKPhysicsContact.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EKPhysicsContact.swift; sourceTree = "<group>"; };
 		5D4AA5C322837D1D009CD28B /* CoreGraphics+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CoreGraphics+Extensions.swift"; sourceTree = "<group>"; };
 		5D8786B62281B384000E2782 /* EvilKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = EvilKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5D8786B92281B384000E2782 /* EvilKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EvilKit.h; sourceTree = "<group>"; };
@@ -75,6 +87,43 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5D160AA22289E89F00C1C0DE /* Collision */ = {
+			isa = PBXGroup;
+			children = (
+				5D160AA52289E8ED00C1C0DE /* EKAABB.swift */,
+			);
+			path = Collision;
+			sourceTree = "<group>";
+		};
+		5D160AA32289E8B600C1C0DE /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				5D3380702285AFB7004B66DC /* EKPhysicsWorld.swift */,
+				5D3380722285AFBE004B66DC /* EKPhysicsBody.swift */,
+				5D3380742285B013004B66DC /* EKPhysicsContactDelegate.swift */,
+				5D3380762285B029004B66DC /* EKPhysicsContact.swift */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		5D160AA42289E8C500C1C0DE /* Shapes */ = {
+			isa = PBXGroup;
+			children = (
+				5D160AA02289D69900C1C0DE /* EKPhysicsShape.swift */,
+			);
+			path = Shapes;
+			sourceTree = "<group>";
+		};
+		5D33806F2285AFA6004B66DC /* Physics */ = {
+			isa = PBXGroup;
+			children = (
+				5D160AA42289E8C500C1C0DE /* Shapes */,
+				5D160AA32289E8B600C1C0DE /* Core */,
+				5D160AA22289E89F00C1C0DE /* Collision */,
+			);
+			path = Physics;
+			sourceTree = "<group>";
+		};
 		5D8786AC2281B384000E2782 = {
 			isa = PBXGroup;
 			children = (
@@ -116,6 +165,7 @@
 		5DC10BEF2281C73A00E55447 /* Engine */ = {
 			isa = PBXGroup;
 			children = (
+				5D33806F2285AFA6004B66DC /* Physics */,
 				5DCD501F228201E300CB0A68 /* Nodes */,
 				5DCD502822820E8500CB0A68 /* Camera */,
 			);
@@ -321,6 +371,7 @@
 				5DC10BF32281C74900E55447 /* EKShapeNode.swift in Sources */,
 				5DCD5031228214B400CB0A68 /* EKNode+Input.swift in Sources */,
 				5D4AA5C422837D1D009CD28B /* CoreGraphics+Extensions.swift in Sources */,
+				5D3380752285B013004B66DC /* EKPhysicsContactDelegate.swift in Sources */,
 				5DCD501D2281FF6500CB0A68 /* EKMaterial.swift in Sources */,
 				5DCD502E228210A800CB0A68 /* EKDebugCamera.swift in Sources */,
 				5DCD5034228217A500CB0A68 /* EKView+Input.swift in Sources */,
@@ -328,13 +379,18 @@
 				5D0C43072281B827004383C9 /* EKVertex.swift in Sources */,
 				5DC10C062281D23200E55447 /* Math+Extension.swift in Sources */,
 				5DCD502A22820E9F00CB0A68 /* EKCameraNode.swift in Sources */,
+				5D3380732285AFBE004B66DC /* EKPhysicsBody.swift in Sources */,
 				5DC10C022281D14300E55447 /* simd+Extension.swift in Sources */,
 				5D0C43052281B60F004383C9 /* EKScene.swift in Sources */,
 				5DC10BF82281C85400E55447 /* EKNode.swift in Sources */,
 				5DCD50152281F79100CB0A68 /* EKSpriteNode.swift in Sources */,
+				5D160AA62289E8ED00C1C0DE /* EKAABB.swift in Sources */,
 				5DC10BEE2281C4DB00E55447 /* EKRenderer.swift in Sources */,
+				5D3380772285B029004B66DC /* EKPhysicsContact.swift in Sources */,
 				5DCD50132281F5BB00CB0A68 /* EKTexture.swift in Sources */,
 				5DCD502522820B6800CB0A68 /* EKNodeTransform.swift in Sources */,
+				5D3380712285AFB7004B66DC /* EKPhysicsWorld.swift in Sources */,
+				5D160AA12289D69900C1C0DE /* EKPhysicsShape.swift in Sources */,
 				5DCD502722820DDD00CB0A68 /* EKSceneTransform.swift in Sources */,
 				5D0C43032281B404004383C9 /* EKView.swift in Sources */,
 				5DC10C002281CDC700E55447 /* Sizeable.swift in Sources */,

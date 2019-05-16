@@ -71,6 +71,15 @@ open class EKNode: NSResponder {
     open var name: String?
 
     /**
+     Physics body attached to the node, with synchronized scale, rotation, and position
+     */
+    open var physicsBody: EKPhysicsBody? {
+        willSet {
+            newValue?.node = self
+        }
+    }
+
+    /**
      The parent of the node.
 
      If this is nil the node has not been added to another group and is thus the root node of its own graph.
