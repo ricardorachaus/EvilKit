@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3DF23804229AFBFB0028A653 /* EKCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF23803229AFBFB0028A653 /* EKCircle.swift */; };
 		5D0C43032281B404004383C9 /* EKView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D0C43022281B404004383C9 /* EKView.swift */; };
 		5D0C43052281B60F004383C9 /* EKScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D0C43042281B60F004383C9 /* EKScene.swift */; };
 		5D0C43072281B827004383C9 /* EKVertex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D0C43062281B827004383C9 /* EKVertex.swift */; };
@@ -41,6 +42,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3DF23803229AFBFB0028A653 /* EKCircle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EKCircle.swift; sourceTree = "<group>"; };
 		5D0C43022281B404004383C9 /* EKView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EKView.swift; sourceTree = "<group>"; };
 		5D0C43042281B60F004383C9 /* EKScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EKScene.swift; sourceTree = "<group>"; };
 		5D0C43062281B827004383C9 /* EKVertex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EKVertex.swift; sourceTree = "<group>"; };
@@ -91,6 +93,7 @@
 			isa = PBXGroup;
 			children = (
 				5D160AA52289E8ED00C1C0DE /* EKAABB.swift */,
+				3DF23803229AFBFB0028A653 /* EKCircle.swift */,
 			);
 			path = Collision;
 			sourceTree = "<group>";
@@ -393,6 +396,7 @@
 				5D160AA12289D69900C1C0DE /* EKPhysicsShape.swift in Sources */,
 				5DCD502722820DDD00CB0A68 /* EKSceneTransform.swift in Sources */,
 				5D0C43032281B404004383C9 /* EKView.swift in Sources */,
+				3DF23804229AFBFB0028A653 /* EKCircle.swift in Sources */,
 				5DC10C002281CDC700E55447 /* Sizeable.swift in Sources */,
 				5DCD50112281F5A000CB0A68 /* EKTextureFilteringMode.swift in Sources */,
 			);

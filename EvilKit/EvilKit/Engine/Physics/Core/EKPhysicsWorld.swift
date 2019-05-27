@@ -43,11 +43,6 @@ open class EKPhysicsWorld: NSObject {
         }
     }
 
-    private func calculateGravityForce(for body: EKPhysicsBody) -> CGVector {
-        return CGVector(dx: body.mass * gravity.dx,
-                        dy: body.mass * gravity.dy)
-    }
-
     private func updatePhysics(for body: EKPhysicsBody, with dt: CGFloat) {
         let slowDownFactor = 0.005.asCGFloat
         let force = calculateGravityForce(for: body)
@@ -63,22 +58,64 @@ open class EKPhysicsWorld: NSObject {
 //            body.angularVelocity += angularAcceleration * dt
 //        }
     }
+    
+    private func calculateGravityForce(for body: EKPhysicsBody) -> CGVector {
+        return CGVector(dx: body.mass * gravity.dx,
+                        dy: body.mass * gravity.dy)
+    }
 
-    private func TestAABBOverlap(bodyA: EKAABB, bodyB: EKAABB) -> Bool {
-        let d1x = bodyB.min.dx - bodyA.max.dx
-        let d1y = bodyB.min.dy - bodyA.max.dy
-        let d2x = bodyA.min.dx - bodyB.max.dx
-        let d2y = bodyA.min.dx - bodyB.max.dy
-
-        if (d1x > 0 || d1y > 0) {
+    private func AABBOverlap(between bodyA: EKAABB, and bodyB: EKAABB) -> Bool {
+        if ((bodyA.max.dx < bodyB.min.dx) || (bodyA.min.dx > bodyB.max.dx)) {
             return false
         }
-
-        if (d2x > 0 || d2y > 0) {
+        if ((bodyA.max.dy < bodyB.min.dy) || (bodyA.min.dy > bodyB.max.dy)) {
             return false
         }
-
         return true
+    }
+    
+    private func circleCollision(between bodyA: EKCircle, and bodyB: EKCircle) -> Bool {
+        let squareX = pow((bodyA.position.dx - bodyB.position.dx), 2)
+        let squareY = pow((bodyA.position.dy - bodyB.position.dy), 2)
+        var r = bodyA.radius + bodyB.radius
+        r *= r
+        return r < squareX + squareY
+    }
+    
+    private func resolveCollision(bodyA: EKPhysicsBody, bodyB: EKPhysicsBody) {
+        // Relative velocity
+        let rv = CGVector(dx: bodyB.velocity.dx - bodyA.velocity.dx,
+                          dy: bodyB.velocity.dy - bodyA.velocity.dy)
+        let normal = CGVector(dx: 0, dy: 0)
+        
+        // Relative velocity in terms of normal
+        let velocityAlongNormal = dotProduct(x: rv,
+                                             y: normal)
+        
+        if velocityAlongNormal > 0 {
+            return
+        }
+        
+        // Calculate restitution
+        let e = min(bodyA.restitution, bodyB.restitution)
+        
+        // Calculate impulse scalar
+        var j = -(1 * e) * velocityAlongNormal
+        j /= (1 / bodyA.mass) + (1 / bodyB.mass)
+        
+        // Apply impulse
+        let impulse = CGVector(dx: j * normal.dx,
+                               dy: j * normal.dy)
+        
+        bodyA.velocity.dx -= (1 / bodyA.mass) * impulse.dx
+        bodyA.velocity.dy -= (1 / bodyA.mass) * impulse.dy
+        
+        bodyB.velocity.dx += (1 / bodyB.mass) * impulse.dx
+        bodyB.velocity.dy += (1 / bodyB.mass) * impulse.dy
+    }
+    
+    private func dotProduct(x: CGVector, y: CGVector) -> CGFloat {
+        return (x.dx * y.dx) + (x.dy * y.dy)
     }
 
 }
