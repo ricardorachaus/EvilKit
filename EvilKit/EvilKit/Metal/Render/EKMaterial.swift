@@ -9,8 +9,8 @@
 import simd
 
 internal struct EKMaterial: Sizeable {
-    internal var strokeColor: float4 = float4(0, 0, 0, 1)
-    internal var fillColor: float4 = float4(1, 0, 0, 1)
+    internal var strokeColor: SIMD4<Float> = SIMD4<Float>(0, 0, 0, 1)
+    internal var fillColor: SIMD4<Float> = SIMD4<Float>(1, 0, 0, 1)
     internal var useTexture: Bool = false
     internal var isCircular: Bool = false
 

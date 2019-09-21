@@ -34,7 +34,7 @@ open class EKColor {
                                         alpha: alpha.asDouble)
     }
 
-    internal func colorVector() -> float4 {
-        return float4(red, green, blue, alpha)
+    internal func colorVector() -> SIMD4<Float> {
+        return SIMD4<Float>(red, green, blue, alpha)
     }
 }

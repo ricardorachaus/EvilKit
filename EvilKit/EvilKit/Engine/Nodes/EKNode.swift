@@ -8,7 +8,7 @@
 
 import MetalKit
 
-internal let Z_AXIS: float3 = float3(0, 0, 1)
+internal let Z_AXIS: SIMD3<Float> = SIMD3<Float>(0, 0, 1)
 
 open class EKNode: NSResponder {
 
@@ -99,9 +99,9 @@ open class EKNode: NSResponder {
     internal var mesh: EKMesh?
     internal var parentMatrix: matrix_float4x4 = matrix_identity_float4x4
     internal var transform: EKNodeTransform
-    internal var nodePosition: float3 = float3(0, 0, 0)
-    internal var nodeScale: float3 = float3(1, 1, 1)
-    internal var nodeRotation: float3 = float3(0, 0, 0)
+    internal var nodePosition: SIMD3<Float> = SIMD3<Float>(0, 0, 0)
+    internal var nodeScale: SIMD3<Float> = SIMD3<Float>(1, 1, 1)
+    internal var nodeRotation: SIMD3<Float> = SIMD3<Float>(0, 0, 0)
     internal var nodeMatrix: matrix_float4x4 {
         var matrix = matrix_identity_float4x4
         matrix.translate(direction: nodePosition)

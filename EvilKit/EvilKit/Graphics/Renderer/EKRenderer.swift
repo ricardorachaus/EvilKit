@@ -77,7 +77,7 @@ open class EKRenderer : NSObject {
 
         vertexDescriptor.attributes[1].format = .float2
         vertexDescriptor.attributes[1].bufferIndex = 0
-        vertexDescriptor.attributes[1].offset = float3.size
+        vertexDescriptor.attributes[1].offset = SIMD3<Float>.size
 
         vertexDescriptor.layouts[0].stride = EKVertex.stride
 
